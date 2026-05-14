@@ -1,4 +1,4 @@
-import heroImg from "@/assets/hero-salon.jpg";
+import heroImg from "@/assets/about.jpeg";
 
 const BOOKSY = "https://booksy.com/pl-pl/234739_unitedhair_fryzjer_11597_katowice#ba_s=seo";
 

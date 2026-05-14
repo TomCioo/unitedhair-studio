@@ -1,4 +1,4 @@
-import aboutImg from "@/assets/about-salon.jpg";
+import aboutImg from "@/assets/hero.jpg";
 
 export function About() {
   return (
@@ -39,8 +39,8 @@ export function About() {
 
           <div className="grid grid-cols-3 gap-8 mt-12 pt-10 border-t border-border">
             {[
-              { n: "10+", l: "Lat doświadczenia" },
-              { n: "3K+", l: "Zadowolonych klientów" },
+              { n: "5+", l: "Lat doświadczenia" },
+              { n: "1000+", l: "Zadowolonych klientów" },
               { n: "100%", l: "Premium kosmetyki" },
             ].map((s) => (
               <div key={s.l}>
