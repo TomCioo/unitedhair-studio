@@ -1,0 +1,148 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-graphite: var(--graphite);
+  --color-cream: var(--cream);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-display: "Cormorant Garamond", "Playfair Display", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --shadow-elegant: 0 30px 60px -30px color-mix(in oklab, var(--graphite) 35%, transparent);
+  --shadow-soft: 0 10px 40px -20px color-mix(in oklab, var(--graphite) 25%, transparent);
+
+  --animate-fade-in: fade-in 0.8s ease-out both;
+  --animate-fade-up: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-shimmer: shimmer 3s linear infinite;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+:root {
+  --radius: 0.25rem;
+
+  --background: oklch(0.985 0.005 80);
+  --foreground: oklch(0.18 0.01 60);
+
+  --cream: oklch(0.96 0.012 80);
+  --graphite: oklch(0.22 0.008 60);
+  --gold: oklch(0.74 0.105 75);
+  --gold-soft: oklch(0.85 0.06 80);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.18 0.01 60);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.18 0.01 60);
+
+  --primary: oklch(0.18 0.01 60);
+  --primary-foreground: oklch(0.985 0.005 80);
+  --secondary: oklch(0.96 0.012 80);
+  --secondary-foreground: oklch(0.18 0.01 60);
+  --muted: oklch(0.94 0.01 80);
+  --muted-foreground: oklch(0.45 0.015 60);
+  --accent: oklch(0.74 0.105 75);
+  --accent-foreground: oklch(0.18 0.01 60);
+
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: oklch(0.88 0.01 75);
+  --input: oklch(0.88 0.01 75);
+  --ring: oklch(0.74 0.105 75);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .text-gold { color: var(--gold); }
+  .bg-gold { background-color: var(--gold); }
+  .bg-graphite { background-color: var(--graphite); }
+  .text-graphite { color: var(--graphite); }
+
+  .gold-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold) 50%, transparent);
+  }
+
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), transform 1s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .hover-lift {
+    transition: transform 0.5s cubic-bezier(0.22,1,0.36,1), box-shadow 0.5s ease;
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elegant);
+  }
+}
